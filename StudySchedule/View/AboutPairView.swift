@@ -11,12 +11,39 @@ struct AboutPairView: View {
     var pair: Pair
     
     var body: some View {
-        Text(pair.name ?? "")
+        VStack() {
+            Spacer()
+            Text(pair.name ?? "")
+                .font(.largeTitle)
+            Spacer()
+            List {
+                HStack {
+                    Text("По типу пара")
+                    Spacer()
+                    Text(pair.type.title)
+                }
+                HStack {
+                    Text("Аудитория")
+                    Spacer()
+                    Text(pair.classroom ?? "")
+                }
+                HStack {
+                    Text("Преподаватель")
+                    Spacer()
+                    Text(pair.teacher ?? "")
+                }
+                HStack {
+                    Text("Дополнительная информация")
+                    Spacer()
+                    Text(pair.info ?? "")
+                }
+            }
+        }
     }
 }
 
 struct AboutPairView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutPairView(pair: Pair(type: .lecure, number: 1, name: "Math", teacher: "Miska", info: "nissan"))
+        AboutPairView(pair: Pair(type: .lecure, number: 1, name: "Математика", teacher: "Miska", classroom: "432а", info: "nissan"))
     }
 }

@@ -17,7 +17,7 @@ struct ContentView: View {
             List(content.days) { day in
                 Section {
                     DayView(day: day)
-                        .listRowBackground(Color(hex: 0xcbf2f5))
+                        .listRowBackground(Color(hex: 0xFFF0F5))
                 }
             }
             .toolbar {
