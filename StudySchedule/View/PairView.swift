@@ -12,27 +12,29 @@ struct PairView: View {
     @State private var openAbout = false
     
     var body: some View {
-        HStack {
-            Text("\(pair.number.toRoman())")
-                .bold()
-            Spacer()
-            if pair.type != .empty {
+        if pair.type != .empty {
+            HStack {
+                Text("\(pair.number.toRoman())")
+                    .bold()
+                Spacer()
                 Text((pair.type.title.first?.description)!).bold()
                 Spacer()
                 Text(pair.name ?? "").bold()
-            } else {
-                Text(pair.type.title).italic()
+                
+                Spacer()
             }
-            Spacer()
+            .font(.system(size: 20))
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(.gray)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .onTapGesture {
+                openAbout = true
+            }
+            .sheet(isPresented: $openAbout, content: { AboutPairView(pair: pair) })
+        } else {
+            EmptyPairView(number: pair.number)
         }
-        .font(.system(size: 20))
-        .frame(maxWidth: .infinity)
-        .padding()
-        .border(Color(hex: 0xA18594), width: 3)
-        .onTapGesture {
-            openAbout = true
-        }
-        .sheet(isPresented: $openAbout, content: { AboutPairView(pair: pair) })
     }
 }
 
