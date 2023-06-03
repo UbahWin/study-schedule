@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct StudyScheduleApp: App {
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView(content: Content(days: [Day(pairs: [
@@ -16,6 +18,7 @@ struct StudyScheduleApp: App {
                 Pair(number: 2),
                 Pair(type: .practice, number: 3, name: "Game", teacher: "Piska", info: "nan")
             ])], week: .even))
+            .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
