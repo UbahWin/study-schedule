@@ -8,38 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var nextWeek: String = ""
-    @State var infoWeek: Bool = false
+    @State var isWeekAlert: Bool = false
     
     @FetchRequest(sortDescriptors: []) var days: FetchedResults<Day>
     @Environment(\.managedObjectContext) var moc
-    
-    func exampleData() {
-        let examplePair1 = Pair(context: moc)
-        examplePair1.classroom = "123d"
-        examplePair1.id = UUID()
-        examplePair1.info = "adf"
-        examplePair1.name = "Math"
-        examplePair1.number = 1
-        examplePair1.teacher = "miska"
-        examplePair1.type = .lecure
-        
-        let examplePair2 = Pair(context: moc)
-        examplePair2.classroom = "asdasf"
-        examplePair2.id = UUID()
-        examplePair2.info = "adf"
-        examplePair2.name = "asfafs"
-        examplePair2.number = 2
-        examplePair2.teacher = "aw1w"
-        examplePair2.type = .practice
-        
-        let exampleDay = Day(context: moc)
-        exampleDay.date = .monday
-        exampleDay.addToPairs(examplePair1)
-        exampleDay.addToPairs(examplePair2)
-        
-        try? moc.save()
-    }
     
     var body: some View {
         NavigationStack() {
@@ -55,15 +27,14 @@ struct ContentView: View {
                         Spacer()
                         NavigationLink(destination: { EditingView() }, label: { Image(systemName: "square.and.pencil") })
                         Spacer()
-                        Button("Чётная") {
-//                            nextWeek = content.week == .even ? "Нечётная" : "Чётная"
-                            infoWeek = true
+                        Button(Date().isWeekEven() ? "Нечётная" : "Чётная") {
+                            isWeekAlert = true
                         }
                     }
                 }
             }
-            .alert(isPresented: $infoWeek) {
-                Alert(title: Text("Сейчас \(nextWeek), с такого-то числа будет \(nextWeek)")) // TODO: с какого числа
+            .alert(isPresented: $isWeekAlert) {
+                Alert(title: Text("Сейчас \(Date().isWeekEven() ? "Нечётная" : "Чётная"), с такого-то числа будет \(Date().isWeekEven() ? "Чётная" : "Нечётная")")) // TODO: с какого числа
             }
         }
     }
@@ -95,6 +66,6 @@ struct ContentView_Previews: PreviewProvider {
             
             
             
-        )
+            )
     }
 }

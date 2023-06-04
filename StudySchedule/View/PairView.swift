@@ -36,9 +36,3 @@ struct PairView: View {
         }
     }
 }
-
-//struct PairView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PairView()
-//    }
-//}
