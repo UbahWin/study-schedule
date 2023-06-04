@@ -42,8 +42,8 @@ struct AboutPairView: View {
     }
 }
 
-struct AboutPairView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutPairView(pair: Pair(type: .lecure, number: 1, name: "Математика", teacher: "Miska", classroom: "432а", info: "nissan"))
-    }
-}
+//struct AboutPairView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AboutPairView()
+//    }
+//}

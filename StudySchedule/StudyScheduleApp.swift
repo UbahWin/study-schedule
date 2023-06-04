@@ -13,11 +13,7 @@ struct StudyScheduleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(content: Content(days: [Day(pairs: [
-                Pair(type: .lecure, number: 1, name: "Math", teacher: "Miska", info: "nissan"),
-                Pair(number: 2),
-                Pair(type: .practice, number: 3, name: "Game", teacher: "Piska", info: "nan")
-            ])], week: .even))
+            ContentView()
             .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

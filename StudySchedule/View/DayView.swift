@@ -17,7 +17,7 @@ struct DayView: View {
                 Spacer()
                 Text("Сегодня")
             }
-            ForEach(day.pairs) { pair in
+            ForEach(day.pairsArray) { pair in
                 PairView(pair: pair)
             }
         }
@@ -25,12 +25,8 @@ struct DayView: View {
     }
 }
 
-struct DayView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayView(day: Day(pairs: [
-            Pair(type: .lecure, number: 1, name: "Математика и прикладные хузалуаы", teacher: "Miska", classroom: "432а", info: "nissan"),
-            Pair(number: 2),
-            Pair(type: .practice, number: 3, name: "игры лололошка", teacher: "Piska", classroom: "465", info: "nan")
-        ]))
-    }
-}
+//struct DayView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DayView()
+//    }
+//}

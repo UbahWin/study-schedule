@@ -20,7 +20,6 @@ struct PairView: View {
                 Text((pair.type.title.first?.description)!).bold()
                 Spacer()
                 Text(pair.name ?? "").bold()
-                
                 Spacer()
             }
             .font(.system(size: 20))
@@ -33,13 +32,13 @@ struct PairView: View {
             }
             .sheet(isPresented: $openAbout, content: { AboutPairView(pair: pair) })
         } else {
-            EmptyPairView(number: pair.number)
+            EmptyPairView(number: Int(pair.number))
         }
     }
 }
 
-struct PairView_Previews: PreviewProvider {
-    static var previews: some View {
-        PairView(pair: Pair(type: .lecure, number: 1, name: "Математика", teacher: "Miska", classroom: "432а", info: "nissan"))
-    }
-}
+//struct PairView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PairView()
+//    }
+//}

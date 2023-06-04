@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Pair" representedClassName="Pair" syncable="YES" codeGenerationType="class">
-        <attribute name="claddroom" optional="YES" attributeType="String"/>
+    <entity name="Day" representedClassName="Day" syncable="YES">
+        <attribute name="dateValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="pairs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pair" inverseName="day" inverseEntity="Pair"/>
+    </entity>
+    <entity name="Pair" representedClassName="Pair" syncable="YES">
+        <attribute name="classroom" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="info" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="teacher" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="pairs" inverseEntity="Day"/>
     </entity>
 </model>
